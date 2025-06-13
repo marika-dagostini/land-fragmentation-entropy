@@ -1,4 +1,5 @@
-# Quantifying Land Fragmentation: an Entropy-Based Approach
+## Quantifying Land Fragmentation: an Entropy-Based Approach
+
 My MSc thesis in Statistical Sciences (University of Bologna).
 
 **Last update: December 2020**
