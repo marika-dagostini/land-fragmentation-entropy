@@ -8,9 +8,9 @@ comuni = unique(dataBL$COMUNE[order(dataBL$COMUNE)])[-1]
 comuni
 
 dataBL$COMUNE = as.character(dataBL$COMUNE)
-dataBL$COMUNE = ifelse(dataBL$COMUNE == "Arsi�f¨",'Arsi�', dataBL$COMUNE)
-dataBL$COMUNE = ifelse(dataBL$COMUNE == "San Nicol�f² di Comelico", 'San Nicol� di Comelico', dataBL$COMUNE)
-dataBL$COMUNE = ifelse(dataBL$COMUNE == "Zopp�f¨ di Cadore" , 'Zopp� di Cadore', dataBL$COMUNE)
+dataBL$COMUNE = ifelse(dataBL$COMUNE == "ArsiÃfÂ¨",'Arsiè', dataBL$COMUNE)
+dataBL$COMUNE = ifelse(dataBL$COMUNE == "San NicolÃfÂ² di Comelico", 'San Nicolò di Comelico', dataBL$COMUNE)
+dataBL$COMUNE = ifelse(dataBL$COMUNE == "ZoppÃfÂ¨ di Cadore" , 'Zoppè di Cadore', dataBL$COMUNE)
 dim(dataBL)
 head(dataBL)
 
@@ -20,9 +20,9 @@ print(comuni)
 dataBL_c = read.csv("Belluno/dataBL_100C_all.csv")
 
 dataBL_c$COMUNE = as.character(dataBL_c$COMUNE)
-dataBL_c$COMUNE = ifelse(dataBL_c$COMUNE == "Arsi�f¨",'Arsi�', dataBL_c$COMUNE)
-dataBL_c$COMUNE = ifelse(dataBL_c$COMUNE == "San Nicol�f² di Comelico", 'San Nicol� di Comelico', dataBL_c$COMUNE)
-dataBL_c$COMUNE = ifelse(dataBL_c$COMUNE == "Zopp�f¨ di Cadore" , 'Zopp� di Cadore', dataBL_c$COMUNE)
+dataBL_c$COMUNE = ifelse(dataBL_c$COMUNE == "ArsiÃfÂ¨",'Arsiè', dataBL_c$COMUNE)
+dataBL_c$COMUNE = ifelse(dataBL_c$COMUNE == "San NicolÃfÂ² di Comelico", 'San Nicolò di Comelico', dataBL_c$COMUNE)
+dataBL_c$COMUNE = ifelse(dataBL_c$COMUNE == "ZoppÃfÂ¨ di Cadore" , 'Zoppè di Cadore', dataBL_c$COMUNE)
 
 dataBL = left_join(dataBL, dataBL_c[,c(1,10,12)], by = c('id', 'COMUNE'))
 
@@ -32,12 +32,12 @@ dataBL$frag = ifelse(dataBL$LENGTH > 1, 1, dataBL$frag)
 
 shp_comuni = readOGR(dsn = 'Belluno', layer = 'data18_BL_100')
 
-shp_comuni@data$COMUNE = ifelse(shp_comuni@data$COMUNE == 'Arsi�f¨',
-                                'Arsi�', shp_comuni@data$COMUNE)
-shp_comuni@data$COMUNE = ifelse(shp_comuni@data$COMUNE == 'San Nicol�f² di Comelico', 
-                                'San Nicol� di Comelico', shp_comuni@data$COMUNE)
-shp_comuni@data$COMUNE = ifelse(shp_comuni@data$COMUNE == 'Zopp�f¨ di Cadore', 
-                                'Zopp� di Cadore', shp_comuni@data$COMUNE)
+shp_comuni@data$COMUNE = ifelse(shp_comuni@data$COMUNE == 'ArsiÃfÂ¨',
+                                'Arsiè', shp_comuni@data$COMUNE)
+shp_comuni@data$COMUNE = ifelse(shp_comuni@data$COMUNE == 'San NicolÃfÂ² di Comelico', 
+                                'San Nicolò di Comelico', shp_comuni@data$COMUNE)
+shp_comuni@data$COMUNE = ifelse(shp_comuni@data$COMUNE == 'ZoppÃfÂ¨ di Cadore', 
+                                'Zoppè di Cadore', shp_comuni@data$COMUNE)
 
 sort(unique(shp_comuni@data$COMUNE)[1:61])
 shp_comuni@data = left_join(shp_comuni@data[,c(1,7)], dataBL, by = c('id'='id','COMUNE'='COMUNE' ))
